@@ -1,7 +1,8 @@
-<html>
-    <title>Bwitter</title>
-    <body>
-        <div class="signup-form">
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+          <div class="signup-form">
             <form>
                 User name: <input type="text" class="user-name"><br>
                 First name: <input type="text" class="first-name"><br>
@@ -12,5 +13,5 @@
                 <input type="submit" value="Sign Up">
             </form>
         </div>
-    </body>
-</html>
+    </div>
+{% end %}
