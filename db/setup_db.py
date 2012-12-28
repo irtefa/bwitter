@@ -46,7 +46,7 @@ CREATE TABLE `User` (\
   `user_email` VARCHAR(50) NULL DEFAULT NULL,\
   `first_name` VARCHAR(100) NOT NULL DEFAULT 'NULL',\
   `last_name` VARCHAR(100) NOT NULL DEFAULT 'NULL',\
-  `password` VARCHAR(16) NOT NULL DEFAULT 'NULL',\
+  `password` VARCHAR(1000) NOT NULL DEFAULT 'NULL',\
   PRIMARY KEY (`user_id`)
 );\
 """
