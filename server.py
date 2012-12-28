@@ -26,7 +26,8 @@ class Application(tornado.web.Application):
         )
         handlers = [
             # PAGE HANDLER
-            tornado.web.URLSpec(r'/', IndexPageHandler)
+            tornado.web.URLSpec(r'/', IndexPageHandler),
+            tornado.web.URLSpec(r'/signup/', SignupPageHandler)
             # API HANDLER
         ]
         current_dir = os.path.dirname(__file__)
