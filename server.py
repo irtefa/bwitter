@@ -33,6 +33,7 @@ class Application(tornado.web.Application):
 
         settings = dict(
                         template_path=os.path.join(current_dir, 'templates'),
+                        static_path=os.path.join(current_dir, 'static')
         )
 
         super(Application, self).__init__(handlers, **settings)
