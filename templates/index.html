@@ -2,16 +2,33 @@
 
 {% block content %}
     <div class="container">
-          <div class="login-form">
-            <form>
-                User name: <input type="text" class="user-name"><br>
-                Password: <input type="password" class="passwd-first"><br>
-                <input type="submit" value="Login">
-            </form>
-        </div>
-        <div>
-            <p>If you are not a member sign up here!</p>
-            <a href="/signup/">Signup</a>
-        </div>
+                <div class="control-group" id="username-group">
+                    <label class="control-label">Username:</label>
+                    <div class="controls">
+                        <input id="user-name" class="input-large" rows="1" type="text" placeholder=""></input>
+                        <span class="help-inline hidden" id="username-help">Username should be between 6 and 13 characters.</span>
+                    </div>
+                </div>
+                <div class="control-group" id="password-group">
+                    <label class="control-label">Password:</label>
+                    <div class="controls">
+                        <input type="password" id="pass-word" class="input-large" rows="1" type="text" placeholder="password"></input>
+                        <span class="help-inline hidden" id="password-help">Password should be between 6 and 13 characters.</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn" id="login-button">Login</button>
+                <div class="alert alert-error hidden" id="unregistered-user">
+                    <strong>Warning!</strong> Please sign up.
+                </div>
+                <div class="alert alert-error hidden" id="database-error">
+                    <strong>Warning!</strong> Database Error.
+                </div>
+                <div class="alert alert-error hidden" id="useremail-error">
+                    <strong>Warning!</strong> Username or passwords do not match.
+                </div>
     </div>
+{% end %}
+
+{% block scripts %}
+    <script src="{{ static_url('js/login.js') }}"></script>
 {% end %}
