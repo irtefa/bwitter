@@ -2,51 +2,55 @@
 
 {% block content %}
     <div class="container">
-                <div class="control-group">
+                <div class="control-group" id="username-group">
                     <label class="control-label">Username:</label>
                     <div class="controls">
                         <input id="user-name" class="input-large" rows="1" type="text" placeholder=""></input>
-                        <span class="help-inline hidden" id="age-help">Username should be at least 6 characters long.</span>
+                        <span class="help-inline hidden" id="username-help">Username should be between 6 and 13 characters.</span>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" id="firstname-group">
                     <label class="control-label">First name:</label>
                     <div class="controls">
                         <input id="first-name" class="input-large" rows="1" type="text" placeholder=""></input>
                         <span class="help-inline hidden" id="firstname-help">Please provide a valid first name.</span>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" id="lastname-group">
                     <label class="control-label">Last name:</label>
                     <div class="controls">
                         <input id="last-name" class="input-large" rows="1" type="text" placeholder=""></input>
                         <span class="help-inline hidden" id="lastname-help">Please provide a valid last name.</span>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" id="useremail-group">
                     <label class="control-label">Email:</label>
                     <div class="controls">
                         <input id="user-email" class="input-large" rows="1" type="text" placeholder="example@example.com"></input>
-                        <span class="help-inline hidden" id="email-help">Please provide a valid email address.</span>
+                        <span class="help-inline hidden" id="useremail-help">Please provide a valid email address.</span>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" id="password-group">
                     <label class="control-label">Password:</label>
                     <div class="controls">
                         <input type="password" id="pass-word" class="input-large" rows="1" type="text" placeholder="password"></input>
                         <span class="help-inline hidden" id="password-help">Password should be between 6 and 13 characters.</span>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" id="confirm-group">
                     <label class="control-label">Confirm your password:</label>
                     <div class="controls">
                         <input type="password" id="confirm-pass" class="input-large" rows="1" type="text" placeholder=""></input>
-                        <span class="help-inline hidden" id="password-help">Passwords do not match.</span>
+                        <span class="help-inline hidden" id="confirm-help">Passwords do not match.</span>
                     </div>
                 </div>
-                <button type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn" id="signup-button">Submit</button>
                 <div class="alert alert-error hidden" id="invalid-large">
                     <strong>Warning!</strong> Please provide valid input for all information.
                 </div>
     </div>
+{% end %}
+
+{% block scripts %}
+    <script src="{{ static_url('js/signup.js') }}"></script>
 {% end %}
