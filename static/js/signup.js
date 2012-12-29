@@ -44,11 +44,19 @@ function signup(event) {
         success: function(data) {
             if (data.success === "true")
             {
+                $('#useremail-error').addClass('hidden');
+                $("#username-error").addClass('hidden');
                 window.location.replace("/profile");
             }
-            else
+            else if(data.success === "username")
             {
-                $('#database-error').removeClass('hidden');
+                $('#useremail-error').addClass('hidden');
+                $('#username-error').removeClass('hidden');
+            }
+            else if(data.success === "useremail")
+            {
+                $("#username-error").addClass('hidden');
+                $("#useremail-error").removeClass('hidden');
             }
         }
     });
