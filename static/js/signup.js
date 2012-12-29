@@ -2,6 +2,8 @@ $(document).ready(function() {
     $('#signup-button').click(function(event) {
 
         validate_entry("username");
+        validate_entry("firstname");
+        validate_entry("lastname");
         validate_entry("password");
         validate_entry("useremail");
         validate_entry("confirm");
@@ -50,10 +52,41 @@ function validate_entry(id)
         {
             $("#username-group").removeClass("error");
             $("#username-group").addClass("success");
-            $("#username-group").addClass("hidden");
+            $("#username-help").addClass("hidden");
         }
     }
-
+    else if(id==="firstname")
+    {
+        var f = $("#first-name").val();
+        if(f.length > 0)
+        {
+            $("#firstname-group").removeClass("error");
+            $("#firstname-group").addClass("success");
+            $("#username-help").addClass("hidden");
+        }
+        else
+        {
+            $("#firstname-group").addClass("error");
+            $("#firstname-group").removeClass("success");
+            $("#firstname-help").removeClass("hidden");
+        }
+    }
+    else if(id==="lastname")
+    {
+        var l = $("#last-name").val();
+        if(l.length > 0)
+        {
+            $("#lastname-group").removeClass("error");
+            $("#lastname-group").addClass("success");
+            $("#lastname-help").addClass("hidden");
+        }
+        else
+        {
+            $("#lastname-group").addClass("error");
+            $("#lastname-group").removeClass("success");
+            $("#lastname-help").removeClass("hidden");
+        }
+    }
     else if (id==="password")
     {
         var pwd = $("#pass-word").val();
@@ -90,10 +123,10 @@ function validate_entry(id)
     }
     else if(id==="confirm")
     {
-        var pd = $("#password").val();
+        var pd = $("#pass-word").val();
         var cnf  = $("#confirm-pass").val();
 
-        if(pd === cnf)
+        if(pd === cnf && cnf.length > 0)
         {
              $("#confirm-group").removeClass("error");
             $("#confirm-group").addClass("success");
@@ -111,5 +144,15 @@ function validate_entry(id)
 }
 
 function is_valid_form() {
-
+  var is_valid = !($("#username-group").hasClass("error") ||
+                        $("#password-group").hasClass("error") ||
+                        $("#confirm-group").hasClass("error") ||
+                   $("#useremail-group").hasClass("error")) &&
+                   $("#user-name").val().length !== 0 &&
+                   $("#first-name").val().length !== 0 &&
+                   $("#last-name").val().length !== 0 &&
+                   $("#user-email").val().length !== 0 &&
+                   $("#confirm-pass").val().length !== 0 &&
+                   $("#pass-word").val().length !== 0;
+  return is_valid;
 }
