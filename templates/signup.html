@@ -40,13 +40,16 @@
                 <div class="control-group" id="confirm-group">
                     <label class="control-label">Confirm your password:</label>
                     <div class="controls">
-                        <input type="password" id="confirm-pass" class="input-large" rows="1" type="text" placeholder=""></input>
+                        <input type="password" id="confirm-pass" class="input-large" rows="1" type="text" placeholder="retype password"></input>
                         <span class="help-inline hidden" id="confirm-help">Passwords do not match.</span>
                     </div>
                 </div>
                 <button type="submit" class="btn" id="signup-button">Submit</button>
                 <div class="alert alert-error hidden" id="invalid-form">
                     <strong>Warning!</strong> Please provide valid input for all information.
+                </div>
+                <div class="alert alert-error hidden" id="database-error">
+                    <strong>Warning!</strong> Database Error.
                 </div>
     </div>
 {% end %}

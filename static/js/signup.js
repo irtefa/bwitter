@@ -34,7 +34,24 @@ function signup(event) {
         "user_email": user_email,
         "pass_word": pass_word
     };
-    console.log(post_data);
+
+    $.ajax({
+        url: '/api/signup',
+        type: 'POST',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(post_data),
+        success: function(data) {
+            if (data.success === "true")
+            {
+                window.location.replace("/profile");
+            }
+            else
+            {
+                $('#database-error').removeClass('hidden');
+            }
+        }
+    });
 }
 
 function validate_entry(id)

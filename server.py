@@ -6,6 +6,7 @@ import tornado.web
 import tornado.httpserver
 from tornado.options import options, define
 from handlers.pages import *
+from handlers.user import *
 
 PORT = sys.argv[1]
 HOST = sys.argv[2]
@@ -27,8 +28,9 @@ class Application(tornado.web.Application):
         handlers = [
             # PAGE HANDLER
             tornado.web.URLSpec(r'/', IndexPageHandler),
-            tornado.web.URLSpec(r'/signup/', SignupPageHandler)
+            tornado.web.URLSpec(r'/signup', SignupPageHandler),
             # API HANDLER
+            tornado.web.URLSpec(r'/api/signup', SignupHandler)
         ]
         current_dir = os.path.dirname(__file__)
 
