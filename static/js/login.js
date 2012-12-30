@@ -19,7 +19,7 @@ $(document).ready(function() {
             $("#unregistered-user").addClass("hidden");
             $("#useremail-error").addClass('hidden');
             $("#database-error").addClass('hidden');
-            window.location.replace("/profile");
+            window.location.replace("/dashboard");
         }
         else if(data.success === "unregistered-user")
         {

@@ -1,3 +1,4 @@
+import tornado.ioloop
 from tornado.web import asynchronous
 from tornado.web import RequestHandler
 import simplejson as json
@@ -27,6 +28,8 @@ class LoginHandler(RequestHandler):
 
         if pwd_context.verify(pwd, result["password"]):
             self.write({"success": "success"})
+            user["pass_word"] = "hidden"
+            self.set_secure_cookie("bwitter", tornado.escape.json_encode(user))
             self.finish()
             return
         else:
@@ -69,6 +72,8 @@ class SignupHandler(RequestHandler):
             result = self.application.db.execute(add_user_info)
 
             self.write({"success": "true"})
+            user["pass_word"] = "hidden"
+            self.set_secure_cookie("bwitter", tornado.escape.json_encode(user))
             self.finish()
         else:
             self.finish()

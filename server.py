@@ -7,6 +7,7 @@ import tornado.httpserver
 from tornado.options import options, define
 from handlers.pages import *
 from handlers.user import *
+from handlers.dashboard import *
 
 PORT = sys.argv[1]
 HOST = sys.argv[2]
@@ -29,15 +30,18 @@ class Application(tornado.web.Application):
             # PAGE HANDLER
             tornado.web.URLSpec(r'/', IndexPageHandler),
             tornado.web.URLSpec(r'/signup', SignupPageHandler),
+            tornado.web.URLSpec(r'/dashboard', DashPageHandler),
             # API HANDLER
             tornado.web.URLSpec(r'/api/signup', SignupHandler),
-            tornado.web.URLSpec(r'/api/login', LoginHandler)
+            tornado.web.URLSpec(r'/api/login', LoginHandler),
+            tornado.web.URLSpec(r'/api/dashboard', DashboardHandler)
         ]
         current_dir = os.path.dirname(__file__)
 
         settings = dict(
                         template_path=os.path.join(current_dir, 'templates'),
-                        static_path=os.path.join(current_dir, 'static')
+                        static_path=os.path.join(current_dir, 'static'),
+                        cookie_secret='947e5d1dc624bc99421bfc7e8ebad245'
         )
 
         super(Application, self).__init__(handlers, **settings)

@@ -46,7 +46,7 @@ function signup(event) {
             {
                 $('#useremail-error').addClass('hidden');
                 $("#username-error").addClass('hidden');
-                window.location.replace("/profile");
+                window.location.replace("/dashboard");
             }
             else if(data.success === "username")
             {
