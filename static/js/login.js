@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $("#signup-button").click(function(){
+        window.location.replace("/signup");
+    });
     $("#login-button").click(function(){
     var user_name = $("#user-name").val();
     var pass_word = $("#pass-word").val();

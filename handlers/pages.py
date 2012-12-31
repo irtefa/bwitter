@@ -22,4 +22,7 @@ class SignupPageHandler(RequestHandler):
 class DashPageHandler(RequestHandler):
 
     def get(self):
-        self.render('dashboard.html')
+        if self.get_secure_cookie("bwitter") is not None:
+            self.render('dashboard.html')
+            return
+        self.redirect("/")
