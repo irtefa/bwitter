@@ -64,6 +64,19 @@ CREATE TABLE `Group` (\
 """
 db.execute(cmd)
 
+# Create Notification table
+cmd = """\
+CREATE TABLE `Notification` (\
+  `notification_id` INT NOT NULL AUTO_INCREMENT,\
+  `group_id` INT NOT NULL,\
+  `user_id` INT NOT NULL,\
+  PRIMARY KEY (`notification_id`),\
+  FOREIGN KEY (user_id) REFERENCES `User` (`user_id`),\
+  FOREIGN KEY (group_id) REFERENCES `Group` (`group_id`)\
+);\
+"""
+db.execute(cmd)
+
 # Create Bweet table
 cmd = """\
 CREATE TABLE `Bweet` (\
@@ -75,6 +88,19 @@ CREATE TABLE `Bweet` (\
   PRIMARY KEY (`bweet_id`),\
   FOREIGN KEY (user_id) REFERENCES `User` (`user_id`),\
   FOREIGN KEY (group_id) REFERENCES `Group` (`group_id`)\
+);\
+"""
+db.execute(cmd)
+
+# Create Public Feed table
+cmd = """\
+CREATE TABLE `Pubfeed` (\
+  `pubfeed_id` INT NOT NULL AUTO_INCREMENT,\
+  `user_id` INT NOT NULL,\
+  `posted_at` VARCHAR(50) NOT NULL DEFAULT 'NULL',\
+  `content` VARCHAR(1000) NOT NULL,\
+  PRIMARY KEY (`pubfeed_id`),\
+  FOREIGN KEY (user_id) REFERENCES `User` (`user_id`)\
 );\
 """
 db.execute(cmd)

@@ -43,7 +43,6 @@ class SignupHandler(RequestHandler):
     @asynchronous
     def post(self):
         user = json.loads(self.request.body)
-        print user
         pwd = user["pass_word"]
         hash = pwd_context.encrypt(pwd)
 
