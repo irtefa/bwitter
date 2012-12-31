@@ -41,6 +41,7 @@ $(document).ready(function(){
                 if (data.success === "true")
                 {
                     $("#group-help").addClass('hidden');
+                    window.location.replace('/dashboard');
                 }
                 else if(data.success === "group-exists")
                 {
