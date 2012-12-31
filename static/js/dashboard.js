@@ -2,10 +2,28 @@ $(document).ready(function(){
     // LOAD THINGS ON LOAD
     $.get('/api/dashboard', function(data){
         $("#username").append(data["user_name"]);
+        // ADD GROUPS THAT YOU ARE A MEMBER OF
         var i = 0;
         for(i=0; i < data["groups"].length;i++)
         {
             $("#group-list").append("<p class=" + (i+1) +">" + data["groups"][i] + "</p>");
+        }
+        // ADD GROUPS THAT YOU ARE AN OWNER OF
+        for(i=0; i < data["owners"].length;i++)
+        {
+            $("#owner-list").append("<p group-id=" + data["owner_ids"][i] +">" + data["owners"][i] + "</p>");
+        }
+        // ADD NOTIFICATIONS
+        if (data["notifications"].length === 0)
+        {
+            $("#notification-list").append("No notifications");
+        }
+        else
+        {
+            for(i=0; i < data["notifications"].length;i++)
+            {
+                $("#notification-list").append("<p>" + data["notificationss"][i] + "</p>");
+            }
         }
     });
     // CREATE GROUP ON CLICK

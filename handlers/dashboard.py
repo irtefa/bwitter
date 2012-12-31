@@ -15,6 +15,7 @@ class DashboardHandler(RequestHandler):
 
         user = self.application.db.get(select_user_id)
 
+        # begin = loading groups that you are a part of
         get_groups = """SELECT `group_id` FROM `Members` WHERE `user_id` = "%s" """\
         % (user["user_id"])
 
@@ -28,6 +29,36 @@ class DashboardHandler(RequestHandler):
             group_names.append(blah["group_name"])
 
         user["groups"] = group_names
+
+        # end = loading groups that you are a part of
+
+        # begin = loading groups that you own/ created
+        get_group_names = """SELECT `group_name`, `group_id` FROM `Group` WHERE `user_id` = "%s" """\
+        % (user["user_id"])
+        group_names = []
+        group_ids = []
+        results = self.application.db.query(get_group_names)
+        for result in results:
+            group_names.append(result["group_name"])
+            group_ids.append(result["group_id"])
+
+        user["owners"] = group_names
+        user["owner_ids"] = group_ids
+        # end = loading groups that you own/ created
+
+        # begin = loading notifications you have
+        get_group_id = """SELECT `group_id` FROM `Notification` WHERE `user_id` = "%s" """\
+        % (user["user_id"])
+        notifications = self.application.db.query(get_group_id)
+        group_names = []
+        for notification in notifications:
+            get_group_name = """SELECT `group_name` FROM `Group` WHERE `group_id` = "%s" """\
+            % (notification["group_id"])
+            group_name = self.application.db.get(get_group_name)
+            group_names.append(group_name)
+
+        user["notifications"] = group_names
+        # end = loading notifications you have
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps(user))
         self.finish()
