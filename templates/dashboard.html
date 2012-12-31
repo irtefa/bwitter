@@ -2,8 +2,16 @@
 
 {% block content %}
     <div>
-        <p id="user-name"></p>
+        <p id="username"></p>
     </div>
+    <div class="control-group" id="creategrp-group">
+        <label class="control-label">Create your own group!</label>
+        <div class="controls">
+            <input type="text" id="create-group" class="input-large" rows="1" type="text" placeholder="group name"></input>
+            <span class="help-inline hidden" id="group-help">Group already exists.</span>
+        </div>
+    </div>
+    <button type="submit" class="btn" id="creategroup-button">Create</button>
     <div>
         <p id="group-list"></p>
     </div>
