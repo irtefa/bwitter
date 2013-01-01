@@ -1,4 +1,14 @@
 $(document).ready( function(){
+    $("#pubfeed").live("click", function(e){
+        e.preventDefault();
+        $.get("/api/pubfeed", function(data){
+            var j = 0;
+            for(j = 0; j < data.length; j++)
+            {
+                $("#pubfeed-list").append(data[j]["content"]);
+            }
+        });
+    });
     $(".group-name").live("click", function(e){
         e.preventDefault();
         var group_id = $(this).attr("id");
