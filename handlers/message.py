@@ -28,8 +28,8 @@ class MessageHandler(RequestHandler):
 
         user_id = user_id["user_id"]
 
-        add_msg = """INSERT INTO `Bweet` (`user_id`, `group_id`,`posted_at`, `content`) VALUES ("%s", "%s","%s", "%s") """\
-        % (user_id, group_id, time_stamp, content)
+        add_msg = """INSERT INTO `Bweet` (`user_id`, `group_id`,`posted_at`, `content`, `user_name`) VALUES ("%s", "%s","%s", "%s", "%s") """\
+        % (user_id, group_id, time_stamp, content, user_name)
         self.application.db.execute(add_msg)
         self.write({"success": "true"})
         self.finish()

@@ -81,6 +81,7 @@ db.execute(cmd)
 cmd = """\
 CREATE TABLE `Bweet` (\
   `bweet_id` INT NOT NULL AUTO_INCREMENT,\
+  `user_name` VARCHAR(100) NOT NULL DEFAULT 'NULL',\
   `user_id` INT NOT NULL,\
   `group_id` INT NOT NULL,\
   `posted_at` VARCHAR(50) NOT NULL DEFAULT 'NULL',\
@@ -97,6 +98,7 @@ cmd = """\
 CREATE TABLE `Pubfeed` (\
   `pubfeed_id` INT NOT NULL AUTO_INCREMENT,\
   `user_id` INT NOT NULL,\
+  `user_name` VARCHAR(100) NOT NULL DEFAULT 'NULL',\
   `posted_at` VARCHAR(50) NOT NULL DEFAULT 'NULL',\
   `content` VARCHAR(1000) NOT NULL,\
   PRIMARY KEY (`pubfeed_id`),\
