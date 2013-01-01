@@ -3,7 +3,12 @@ $(document).ready( function(){
         e.preventDefault();
         var group_id = $(this).attr("id");
         $.get("/api/message/" + group_id + "", function(data){
-            console.log(data);
+            var i =0;
+            for(i=0; i < data.length; i++)
+            {
+                $("#message-list"+group_id+"").append(data[i]["content"]);
+                $("#message-list"+group_id+"").append("<hr>");
+            }
         });
     });
 

@@ -7,9 +7,10 @@ class MessageHandler(RequestHandler):
 
     @asynchronous
     def get(self, id):
-        results = """SELECT `content`, `user_id`,`posted_at` FROM `Bweet` WHERE `group_id` = "%s" """\
+        results = """SELECT `content`, `user_id`,`posted_at`, `group_id` FROM `Bweet` WHERE `group_id` = "%s" """\
         % (id)
-        bweets = self.application.db.get(results)
+        bweets = self.application.db.query(results)
+        self.set_header("Content-Type", "application/json")
         self.write(json.dumps(bweets))
         self.finish()
 
