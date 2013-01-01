@@ -38,6 +38,14 @@ class LoginHandler(RequestHandler):
             return
 
 
+class LogoutHandler(RequestHandler):
+
+    @asynchronous
+    def get(self):
+        self.clear_cookie("bwitter")
+        self.redirect('/')
+
+
 class SignupHandler(RequestHandler):
 
     @asynchronous

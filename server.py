@@ -35,7 +35,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/api/signup', SignupHandler),
             tornado.web.URLSpec(r'/api/login', LoginHandler),
             tornado.web.URLSpec(r'/api/dashboard', DashboardHandler),
-            tornado.web.URLSpec(r'/api/creategroup', CreateGroupHandler)
+            tornado.web.URLSpec(r'/api/creategroup', CreateGroupHandler),
+            tornado.web.URLSpec(r'/logout', LogoutHandler)
         ]
         current_dir = os.path.dirname(__file__)
 
