@@ -6,7 +6,8 @@ $(document).ready(function(){
         var i = 0;
         for(i=0; i < data["groups"].length;i++)
         {
-            $("#group-list").append("<p class=" + (i+1) +">" + data["groups"][i] + "</p>");
+            $("#group-list").append("<div class='control-group' id='groupname-group'><strong> Write a message for your friends</strong><input id='form-msg' class='input-large' rows='1' type='text' placeholder=''></input><button class='btn' id='" + data['group_ids'][i] + "'>Submit</button></div>");
+            $("#group-list").append("<p class='group-name' id='" + data["group_ids"][i] + "'>" + data["groups"][i] + "</p><hr>");
         }
         // ADD GROUPS THAT YOU ARE AN OWNER OF
         for(i=0; i < data["owners"].length;i++)
@@ -51,3 +52,15 @@ $(document).ready(function(){
         });
     });
 });
+
+/*
+                "<div class='control-group' id='username-group'>
+                    <strong> Username should be between 6 and 13 characters long.</strong>
+                    <label class='control-label'>Username:</label>
+                    <div class='controls'>
+                        <input id='user-name' class='input-large' rows='1' type='text' placeholder=''></input>
+                        <span class='help-inline hidden' id='username-help'>Username should be between 6 and 13 characters.</span>
+                    </div>
+                </div>"
+
+*/

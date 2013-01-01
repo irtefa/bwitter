@@ -8,6 +8,7 @@ from tornado.options import options, define
 from handlers.pages import *
 from handlers.user import *
 from handlers.dashboard import *
+from handlers.message import *
 
 PORT = sys.argv[1]
 HOST = sys.argv[2]
@@ -36,7 +37,9 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/api/login', LoginHandler),
             tornado.web.URLSpec(r'/api/dashboard', DashboardHandler),
             tornado.web.URLSpec(r'/api/creategroup', CreateGroupHandler),
-            tornado.web.URLSpec(r'/logout', LogoutHandler)
+            tornado.web.URLSpec(r'/logout', LogoutHandler),
+            tornado.web.URLSpec(r'/api/message', MessageHandler),
+            tornado.web.URLSpec(r'/api/message/([0-9]+)', MessageHandler)
         ]
         current_dir = os.path.dirname(__file__)
 

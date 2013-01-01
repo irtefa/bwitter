@@ -22,13 +22,16 @@ class DashboardHandler(RequestHandler):
         results = self.application.db.query(get_groups)
 
         group_names = []
+        group_ids = []
         for result in results:
             get_group_names = """SELECT `group_name` FROM `Group` WHERE `group_id` = "%s" """\
             % (result["group_id"])
             blah = self.application.db.get(get_group_names)
             group_names.append(blah["group_name"])
+            group_ids.append(result["group_id"])
 
         user["groups"] = group_names
+        user["group_ids"] = group_ids
 
         # end = loading groups that you are a part of
 
