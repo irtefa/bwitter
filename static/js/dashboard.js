@@ -6,9 +6,9 @@ $(document).ready(function(){
         var i = 0;
         for(i=0; i < data["groups"].length;i++)
         {
-            $("#group-list").append("<div class='control-group' id='groupname-group'><strong> Write a message for your friends</strong><input id='form-msg' class='input-large' rows='1' type='text' placeholder=''></input><button class='btn' id='" + data['group_ids'][i] + "'>Submit</button></div>");
             $("#group-list").append("<p class='group-name' id='" + data["group_ids"][i] + "'>" + data["groups"][i] + "</p><hr>");
             $("#group-list").append("<div id='message-list"+ data['group_ids'][i] + "'></div>");
+            $("#group-list").append("<div class='control-group' id='groupname-group'><strong> Write a message for your friends</strong><input id='form-msg' class='input-large' rows='1' type='text' placeholder=''></input><button class='btn' id='" + data['group_ids'][i] + "'>Submit</button></div>");
         }
         // ADD GROUPS THAT YOU ARE AN OWNER OF
         for(i=0; i < data["owners"].length;i++)

@@ -21,6 +21,11 @@
     <div>
         <strong id="pubfeed">Public:</strong>
         <p id="pubfeed-list"></p>
+        <div class='control-group' id='pubfeed-group'>
+            <strong> Write a message for your friends</strong>
+            <input id='form-msg' class='input-large' rows='1' type='text' placeholder=''></input>
+            <button class='btn' id='" + data['group_ids'][i] + "'>Submit</button>
+        </div>
     </div>
     <div>
         <strong>You Own:</strong>
@@ -36,6 +41,7 @@
 {% end %}
 
 {% block scripts %}
+        <script src="{{ static_url('js/global.js') }}"></script>
         <script src="{{ static_url('js/dashboard.js') }}"></script>
         <script src="{{ static_url('js/message.js') }}"></script>
 {% end %}
