@@ -1,5 +1,10 @@
 $(document).ready( function(){
     $("#pubfeed").live("click", function(e){
+        var k;
+        for(k=0; k < global_data_array.length; k++)
+        {
+                    $("#message-list" + global_data_array[k] + "").empty();
+        }
         e.preventDefault();
         $.get("/api/pubfeed", function(data){
             var j = 0;
@@ -7,6 +12,7 @@ $(document).ready( function(){
             for(j = 0; j < data.length; j++)
             {
                 $("#pubfeed-list").append(data[j]["content"]);
+                $("#pubfeed-list").append("<hr>");
             }
         });
     });
@@ -22,6 +28,7 @@ $(document).ready( function(){
                     $("#message-list" + global_data_array[k] + "").empty();
                 }
             }
+            $("#pubfeed-list").empty();
             global_data_array.push(group_id);
             var i =0;
             $("#message-list"+group_id+"").empty();
@@ -44,6 +51,28 @@ $(document).ready( function(){
         };
         $.ajax({
             url: '/api/message',
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(post_data),
+            success: function(data) {
+                if (data.success === "true")
+                {
+                    window.location.replace('/dashboard');
+                }
+            }
+        });
+    });
+
+    $(".pubfeed-btn").live("click", function(e){
+        var content = $(this).prev().val();
+        var timestamp = new Date().toISOString();
+        var post_data = {
+            "content": content,
+            "timestamp": timestamp
+        };
+        $.ajax({
+            url: '/api/pubfeed',
             type: 'POST',
             contentType: 'application/json',
             dataType: 'json',
